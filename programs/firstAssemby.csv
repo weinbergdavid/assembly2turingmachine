@@ -1,0 +1,120 @@
+#,input,move to,output,new state
+#,start program,,,
+0,,r,,0
+0,c2,d,,1
+#,search for IP,,,
+1,,d,,1
+1,p4,r,,2
+#,read instruction,,,
+2,p2,r,,2
+2,p3,r,,2
+2,,l,,4
+#,we reached the end of the mover command (0) - go and do it,,,
+2,p0,s,p2,100
+#,we either in mark ax as source (11) or mark bx as destination (10),,,
+2,p1,r,p3,3
+#,we are in mark bx as destination (10),,,
+3,p0,s,p2,200
+#,we are in mark ax as source (10),,,
+3,p1,s,p3,300
+#,mark bx as destination,,,
+200,,u,,200
+200,c0,s,,201
+201,,r,,201
+201,c3,d,,202
+202,,d,p6,203
+202,p5,d,p7,203
+203,,d,,204
+204,,r,p6,20
+204,p5,r,p7,20
+#,mark ax as source,,,
+300,,u,,300
+300,c0,s,,301
+301,,r,,301
+301,c3,d,,302
+302,,d,p5,303
+302,p6,d,p7,303
+303,,r,p5,20
+303,p6,r,p7,20
+#,go back to the code,,,
+20,,u,,20
+20,c0,l,,21
+21,,l,,21
+21,c2,s,,1
+#,move source to destination,,,
+100,,u,,100
+100,c0,s,,104
+104,,l,,104
+104,c1,d,,101
+#,search for source,,,
+101,,r,,101
+101,p5,d,,102
+101,p7,d,,102
+102,p5,r,,103
+102,p7,r,,103
+#,copy source,,,
+103,p2,r,,103
+103,p3,r,,103
+103,p0,,p2,110
+103,p1,,p3,120
+103,,l,,130
+#,search destination with 0 bit,,,
+110,,u,,110
+110,c0,l,,111
+111,,l,,111
+111,c1,d,,112
+112,,r,,112
+112,p6,d,,113
+112,p7,d,,113
+113,,d,,113
+113,p6,r,,114
+113,p7,r,,114
+114,p2,r,,114
+114,p3,r,,114
+114,,u,p2,115
+115,,u,,115
+115,c0,l,,116
+116,,l,,116
+116,c1,d,,101
+#,search destination with 1 bit,,,
+120,,u,,120
+120,c0,l,,121
+121,,l,,121
+121,c1,d,,122
+122,,r,,122
+122,p6,d,,123
+122,p7,d,,123
+123,,d,,123
+123,p6,r,,124
+123,p7,r,,124
+124,p2,r,,124
+124,p3,r,,124
+124,,u,p3,125
+125,,u,,125
+125,c0,l,,126
+126,,l,,126
+126,c1,d,,101
+#,untag source,,,
+130,p2,l,p0,130
+130,p3,l,p1,130
+130,p5,u,s0,131
+130,p7,u,p6,131
+131,,u,,131
+131,p5,u,s0,132
+131,p7,u,p6,132
+#,search for destination to untag,,,
+132,,l,,132
+132,c1,d,,133
+133,,r,,133
+#,untag destination,,,
+133,p6,d,s0,134
+134,,d,,134
+134,p6,r,s0,135
+135,p2,r,p0,135
+135,p3,r,p1,135
+135,,s,,20
+#,move IP one instruction forward,,,
+4,p2,l,p0,4
+4,p3,l,p1,4
+4,p4,d,s0,5
+5,,r,p4,2

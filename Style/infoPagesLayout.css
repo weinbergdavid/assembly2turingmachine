@@ -1,0 +1,164 @@
+* { margin:0;
+	padding:0;
+}
+
+html {height: 100%;}
+
+body{
+	position: relative;
+	height: 100%;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#fff));
+	background: -moz-linear-gradient(linear, left top, left bottom, from(#ccc), to(#fff));
+	background: -ms-gradient(linear, left top, left bottom, from(#ccc), to(#fff));
+	background: -o-gradient(linear, left top, left bottom, from(#ccc), to(#fff));
+	background-attachment: fixed;
+}
+
+.navbox {
+	position: fixed;
+	float: left;
+}
+
+ul.nav {
+	list-style: none;
+	display: block;
+	width: 200px;
+	position: relative;
+	top: 100px;
+	left: 100px;
+	padding: 60px 0 60px 0;
+	/*background: url(shad2.png) no-repeat;*/
+	-webkit-background-size: 50% 100%;
+	-moz-background-size: 50% 100%;
+	-ms-background-size: 50% 100%;
+	-o-background-size: 50% 100%;
+}
+
+li {
+	margin: 5px 0 0 0;
+}
+
+ul.nav li a {
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	/*	background: #cbcbcb url(border.png) no-repeat;*/
+	background: #cbcbcb;
+	color: #174867;
+	padding: 7px 15px 7px 15px;
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-top-right-radius: 10px;
+	-ms-border-top-right-radius: 10px;
+	-o-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-bottom-right-radius: 10px;
+	-ms-border-bottom-right-radius: 10px;
+	-o-border-bottom-right-radius: 10px;
+	width: 100px;
+	display: block;
+	text-decoration: none;
+	-webkit-box-shadow: 2px 2px 4px #888;
+	-moz-box-shadow: 2px 2px 4px #888;
+	-ms-box-shadow: 2px 2px 4px #888;
+	-o-box-shadow: 2px 2px 4px #888;
+}
+
+ul.nav li a:hover {
+	/*	background: #ebebeb url(border.png) no-repeat;*/
+	background: #ebebeb;
+	color: #67a5cd;
+	padding: 7px 15px 7px 30px;
+}
+
+/* info pages */
+
+root { 
+    display: block;
+}
+
+h2{
+	margin: 10px 10px 10px 6px;
+}
+
+p{
+	margin: 6px;
+}
+
+#contentWrapper {
+	margin: 50px 50px 0px 300px;
+}
+
+#textContent {
+	font-family: 'Inconsolata', sans-serif;
+	font-size: 1.2em;
+	text-align: justify;
+}
+
+.citation{
+	font-style: italic;
+	margin: 6px 6px 6px 45px;
+}
+
+#credit{
+	margin: 25px;
+	font-family: 'Inconsolata', sans-serif;
+	font-size: 0.8em;
+}
+
+/*index page*/
+
+#divsWrapper {
+}
+
+.linkDiv {
+	clear: both;
+	width: 80%;
+	margin: 25px;
+	padding: 25px;
+	font-family: 'Armata', sans-serif;
+	border: #fff thin solid;
+	border-radius: 25px;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+	-webkit-transition: -webkit-transform 0.2s ease-in-out;
+	-moz-transition: -webkit-transform 0.2s ease-in-out;
+	-ms-transition: -webkit-transform 0.2s ease-in-out;
+	-o-transition: -webkit-transform 0.2s ease-in-out;
+}
+
+.linkDiv:hover {
+	-webkit-transform: scale(1.05);
+	-moz-transform: scale(1.05);
+	-ms-transform: scale(1.05);
+	-o-transform: scale(1.05);
+	-webkit-transition: -webkit-transform 0.2s ease-in-out;
+	-moz-transition: -webkit-transform 0.2s ease-in-out;
+	-ms-transition: -webkit-transform 0.2s ease-in-out;
+	-o-transition: -webkit-transform 0.2s ease-in-out;
+}
+
+.divLink {
+	position:absolute; 
+	width:100%;
+	height:100%;
+	top:0;
+	left: 0;
+	z-index: 1;
+}
+
+#floater {
+	width: 100%;
+	height: 150px;
+	float: left;
+}
+
+.linkDiv h4 {
+	font-size: 2em;
+}
+
+.linkDiv p {
+	font-size: 1.2em;
+}

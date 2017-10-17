@@ -1,0 +1,1123 @@
+#,input,move to,output,new state
+0,,,,search next command 0
+untag command 0,,r,,untag command 0
+increment ip 0,rip,d,s0,increment ip 0
+increment ip 0,s0,d,,increment ip 1
+increment ip 1,,s,rip,read command 0
+mark col dst 0,c0,d,,mark col dst 1
+mark col dst 0,,u,,mark col dst 0
+mark col dst 1,ssrc,s,ssrcdst,search next command 0
+mark col dst 1,,s,sdst,search next command 0
+mark col src 0,c0,d,,mark col src 1
+mark col src 0,,u,,mark col src 0
+mark col src 1,sdst,s,ssrcdst,search next command 0
+mark col src 1,,s,ssrc,search next command 0
+mark ax src 0,,u,,mark ax src 0
+mark ax src 0,c0,d,,mark ax src 1
+mark ax src 1,,l,,mark ax src 1
+mark ax src 1,c0,s,,mark ax src 2
+mark ax src 2,,r,,mark ax src 2
+mark ax src 2,tregs,d,,mark ax src 3
+mark ax src 3,,d,,mark ax src 3
+mark ax src 3,rax,l,,mark ax src 4
+mark ax src 4,,d,,mark ax src 5
+mark ax src 5,,s,ssrc,mark col src 0
+mark ax src 5,sdst,s,ssrcdst,mark col src 0
+mark bx dst 0,,u,,mark bx dst 0
+mark bx dst 0,c0,d,,mark bx dst 1
+mark bx dst 1,,l,,mark bx dst 1
+mark bx dst 1,c0,s,,mark bx dst 2
+mark bx dst 2,,r,,mark bx dst 2
+mark bx dst 2,tregs,d,,mark bx dst 3
+mark bx dst 3,,d,,mark bx dst 3
+mark bx dst 3,rbx,l,,mark bx dst 4
+mark bx dst 4,,d,,mark bx dst 5
+mark bx dst 5,,s,sdst,mark col dst 0
+mark bx dst 5,ssrc,s,ssrcdst,mark col dst 0
+mark bx src 0,,u,,mark bx src 0
+mark bx src 0,c0,d,,mark bx src 1
+mark bx src 1,,l,,mark bx src 1
+mark bx src 1,c0,s,,mark bx src 2
+mark bx src 2,,r,,mark bx src 2
+mark bx src 2,tregs,d,,mark bx src 3
+mark bx src 3,,d,,mark bx src 3
+mark bx src 3,rbx,l,,mark bx src 4
+mark bx src 4,,d,,mark bx src 5
+mark bx src 5,,s,ssrc,mark col src 0
+mark bx src 5,sdst,s,ssrcdst,mark col src 0
+read command 0,omark ax src,s,otmark ax src,mark ax src 0
+read command 0,omark ax dst,s,otmark ax dst,mark ax dst 0
+read command 0,omark bx dst,s,otmark bx dst,mark bx dst 0
+read command 0,omark bx src,s,otmark bx src,mark bx src 0
+read command 0,omover,s,otmover,mover 0
+read command 0,ostop,s,,nop 
+read command 0,s0,s,,untag command 0
+read command 0,,r,,read command 0
+search next command 0,c0,d,,search next command 1
+search next command 0,,u,,search next command 0
+search next command 1,c0,r,,search next command 2
+search next command 1,,l,,search next command 1
+search next command 2,tcode,l,,search next command 3
+search next command 2,,r,,search next command 2
+search next command 3,,d,,search next command 3
+search next command 3,rip,r,,read command 0
+untag command 0,otmark ax src,l,omark ax src,untag command 0
+untag command 0,otmark bx dst,l,omark bx dst,untag command 0
+untag command 0,otmark bx src,l,omark bx src,untag command 0
+untag command 0,rip,l,s0,untag command 1
+untag command 1,n1,d,,untag command 2
+untag command 1,s0,d,,untag command 2
+untag command 2,s0,u,,untag command 3
+untag command 2,n0,s,,ip jmp forward 0
+untag command 2,n1,s,,ip jmp reverse 0
+untag command 3,,r,,increment ip 0
+untag command 0,s0,l,,untag command 0
+ip jmp forward 0,n0,d,s0,ip jmp forward 0
+ip jmp forward 0,s0,r,,ip jmp forward 1
+ip jmp forward 1,,s,rip,read command 0
+ip jmp reverse 0,n1,u,s0,ip jmp reverse 0
+ip jmp reverse 0,s0,r,,ip jmp reverse 1
+ip jmp reverse 1,,s,rip,read command 0
+mover 0,,s,,mover go to src 0
+mover go to src 0,,u,,mover go to src 0
+mover go to src 0,c0,d,,mover go to src 1
+mover go to src 1,,l,,mover go to src 1
+mover go to src 1,ssrc,d,,mover go to src 3
+mover go to src 1,ssrcdst,d,,mover go to src 3
+mover go to src 1,c0,r,,mover go to src 2
+mover go to src 2,,r,,mover go to src 2
+mover go to src 2,ssrc,d,,mover go to src 3
+mover go to src 2,ssrcdst,d,,mover go to src 3
+mover go to src 3,,d,,mover go to src 3
+mover go to src 3,ssrc,r,,mover go to src 4
+mover go to src 3,ssrcdst,u,sdst,mover untag src 1
+mover go to src 4,nt0,r,,mover go to src 4
+mover go to src 4,nt1,r,,mover go to src 4
+mover go to src 4,n1,s,nt1,mover go to dst with1 0
+mover go to src 4,n0,s,nt0,mover go to dst with0 0
+mover go to dst with0 0,,u,,mover go to dst with0 0
+mover go to dst with0 0,c0,d,,mover go to dst with0 1
+mover go to dst with0 1,,l,,mover go to dst with0 1
+mover go to dst with0 1,sdst,d,,mover go to dst with0 3
+mover go to dst with0 1,ssrcdst,d,,mover go to dst with0 3
+mover go to dst with0 1,c0,r,,mover go to dst with0 2
+mover go to dst with0 2,,r,,mover go to dst with0 2
+mover go to dst with0 2,sdst,d,,mover go to dst with0 3
+mover go to dst with0 2,ssrcdst,d,,mover go to dst with0 3
+mover go to dst with0 3,,d,,mover go to dst with0 3
+mover go to dst with0 3,sdst,r,,mover go to dst with0 4
+mover go to dst with0 3,ssrcdst,r,,mover go to dst with0 4
+mover go to dst with0 4,,r,,mover go to dst with0 4
+mover go to dst with0 4,n0,,nt0,mover go to src 0
+mover go to dst with0 4,n1,,nt0,mover go to src 0
+mover go to dst with1 0,,u,,mover go to dst with1 0
+mover go to dst with1 0,c0,d,,mover go to dst with1 1
+mover go to dst with1 1,,l,,mover go to dst with1 1
+mover go to dst with1 1,sdst,d,,mover go to dst with1 3
+mover go to dst with1 1,ssrcdst,d,,mover go to dst with1 3
+mover go to dst with1 1,c0,r,,mover go to dst with1 2
+mover go to dst with1 2,,r,,mover go to dst with1 2
+mover go to dst with1 2,sdst,d,,mover go to dst with1 3
+mover go to dst with1 2,ssrcdst,d,,mover go to dst with1 3
+mover go to dst with1 3,,d,,mover go to dst with1 3
+mover go to dst with1 3,sdst,r,,mover go to dst with1 4
+mover go to dst with1 3,ssrcdst,r,,mover go to dst with1 4
+mover go to dst with1 4,,r,,mover go to dst with1 4
+mover go to dst with1 4,n0,,nt1,mover go to src 0
+mover go to dst with1 4,n1,,nt1,mover go to src 0
+mover go to src 4,,l,,mover untag src 0
+mover untag src 0,nt1,l,n1,mover untag src 0
+mover untag src 0,nt0,l,n0,mover untag src 0
+mover untag src 0,ssrc,u,s0,mover untag src 1
+mover untag src 0,ssrcdst,u,sdst,mover untag src 1
+mover untag src 1,,u,,mover untag src 1
+mover untag src 1,ssrc,l,s0,mover go untag dst 0
+mover untag src 1,ssrcdst,l,sdst,mover go untag dst 0
+mover go untag dst 0,,l,,mover go untag dst 0
+mover go untag dst 0,c0,r,,mover go untag dst 1
+mover go untag dst 1,,r,,mover go untag dst 1
+mover go untag dst 1,sdst,d,,mover go untag dst 2
+mover go untag dst 2,,d,,mover go untag dst 2
+mover go untag dst 2,sdst,r,,mover untag dst 0
+mover untag dst 0,nt0,r,,mover untag dst 0
+mover untag dst 0,nt1,r,,mover untag dst 0
+mover untag dst 0,,l,,mover untag dst 1
+mover untag dst 1,nt0,l,n0,mover untag dst 1
+mover untag dst 1,nt1,l,n1,mover untag dst 1
+mover untag dst 1,sdst,u,s0,mover untag dst 2
+mover untag dst 2,,u,,mover untag dst 2
+mover untag dst 2,sdst,s,s0,search next command 0
+untag command 0,otmover,l,omover,untag command 0
+read command 0,omark alu1 dst,s,otmark alu1 dst,mark alu1 dst 0
+untag command 0,otmark alu1 dst,l,omark alu1 dst,untag command 0
+mark alu1 dst 0,,u,,mark alu1 dst 0
+mark alu1 dst 0,c0,d,,mark alu1 dst 1
+mark alu1 dst 1,,l,,mark alu1 dst 1
+mark alu1 dst 1,c0,s,,mark alu1 dst 2
+mark alu1 dst 2,,r,,mark alu1 dst 2
+mark alu1 dst 2,talu,d,,mark alu1 dst 3
+mark alu1 dst 3,,d,,mark alu1 dst 3
+mark alu1 dst 3,ralu1,l,,mark alu1 dst 4
+mark alu1 dst 4,,d,,mark alu1 dst 5
+mark alu1 dst 5,,s,sdst,mark col dst 0
+mark alu1 dst 5,ssrc,s,ssrcdst,mark col dst 0
+read command 0,omark alu1 src,s,otmark alu1 src,mark alu1 src 0
+untag command 0,otmark alu1 src,l,omark alu1 src,untag command 0
+mark alu1 src 0,,u,,mark alu1 src 0
+mark alu1 src 0,c0,d,,mark alu1 src 1
+mark alu1 src 1,,l,,mark alu1 src 1
+mark alu1 src 1,c0,s,,mark alu1 src 2
+mark alu1 src 2,,r,,mark alu1 src 2
+mark alu1 src 2,talu,d,,mark alu1 src 3
+mark alu1 src 3,,d,,mark alu1 src 3
+mark alu1 src 3,ralu1,l,,mark alu1 src 4
+mark alu1 src 4,,d,,mark alu1 src 5
+mark alu1 src 5,,s,ssrc,mark col src 0
+mark alu1 src 5,sdst,s,ssrcdst,mark col src 0
+read command 0,omark alu2 dst,s,otmark alu2 dst,mark alu2 dst 0
+untag command 0,otmark alu2 dst,l,omark alu2 dst,untag command 0
+mark alu2 dst 0,,u,,mark alu2 dst 0
+mark alu2 dst 0,c0,d,,mark alu2 dst 1
+mark alu2 dst 1,,l,,mark alu2 dst 1
+mark alu2 dst 1,c0,s,,mark alu2 dst 2
+mark alu2 dst 2,,r,,mark alu2 dst 2
+mark alu2 dst 2,talu,d,,mark alu2 dst 3
+mark alu2 dst 3,,d,,mark alu2 dst 3
+mark alu2 dst 3,ralu2,l,,mark alu2 dst 4
+mark alu2 dst 4,,d,,mark alu2 dst 5
+mark alu2 dst 5,,s,sdst,mark col dst 0
+mark alu2 dst 5,ssrc,s,ssrcdst,mark col dst 0
+read command 0,omark alu2 src,s,otmark alu2 src,mark alu2 src 0
+untag command 0,otmark alu2 src,l,omark alu2 src,untag command 0
+mark alu2 src 0,,u,,mark alu2 src 0
+mark alu2 src 0,c0,d,,mark alu2 src 1
+mark alu2 src 1,,l,,mark alu2 src 1
+mark alu2 src 1,c0,s,,mark alu2 src 2
+mark alu2 src 2,,r,,mark alu2 src 2
+mark alu2 src 2,talu,d,,mark alu2 src 3
+mark alu2 src 3,,d,,mark alu2 src 3
+mark alu2 src 3,ralu2,l,,mark alu2 src 4
+mark alu2 src 4,,d,,mark alu2 src 5
+mark alu2 src 5,,s,ssrc,mark col src 0
+mark alu2 src 5,sdst,s,ssrcdst,mark col src 0
+read command 0,omark ax dst,s,otmark ax dst,mark ax dst 0
+untag command 0,otmark ax dst,l,omark ax dst,untag command 0
+mark ax dst 0,,u,,mark ax dst 0
+mark ax dst 0,c0,d,,mark ax dst 1
+mark ax dst 1,,l,,mark ax dst 1
+mark ax dst 1,c0,s,,mark ax dst 2
+mark ax dst 2,,r,,mark ax dst 2
+mark ax dst 2,tregs,d,,mark ax dst 3
+mark ax dst 3,,d,,mark ax dst 3
+mark ax dst 3,rax,l,,mark ax dst 4
+mark ax dst 4,,d,,mark ax dst 5
+mark ax dst 5,,s,sdst,mark col dst 0
+mark ax dst 5,ssrc,s,ssrcdst,mark col dst 0
+read command 0,omark cx dst,s,otmark cx dst,mark cx dst 0
+untag command 0,otmark cx dst,l,omark cx dst,untag command 0
+mark cx dst 0,,u,,mark cx dst 0
+mark cx dst 0,c0,d,,mark cx dst 1
+mark cx dst 1,,l,,mark cx dst 1
+mark cx dst 1,c0,s,,mark cx dst 2
+mark cx dst 2,,r,,mark cx dst 2
+mark cx dst 2,tregs,d,,mark cx dst 3
+mark cx dst 3,,d,,mark cx dst 3
+mark cx dst 3,rcx,l,,mark cx dst 4
+mark cx dst 4,,d,,mark cx dst 5
+mark cx dst 5,,s,sdst,mark col dst 0
+mark cx dst 5,ssrc,s,ssrcdst,mark col dst 0
+read command 0,omark cx src,s,otmark cx src,mark cx src 0
+untag command 0,otmark cx src,l,omark cx src,untag command 0
+mark cx src 0,,u,,mark cx src 0
+mark cx src 0,c0,d,,mark cx src 1
+mark cx src 1,,l,,mark cx src 1
+mark cx src 1,c0,s,,mark cx src 2
+mark cx src 2,,r,,mark cx src 2
+mark cx src 2,tregs,d,,mark cx src 3
+mark cx src 3,,d,,mark cx src 3
+mark cx src 3,rcx,l,,mark cx src 4
+mark cx src 4,,d,,mark cx src 5
+mark cx src 5,,s,ssrc,mark col src 0
+mark cx src 5,ssrc,s,ssrcsrc,mark col src 0
+read command 0,omark dx src,s,otmark dx src,mark dx src 0
+untag command 0,otmark dx src,l,omark dx src,untag command 0
+mark dx src 0,,u,,mark dx src 0
+mark dx src 0,c0,d,,mark dx src 1
+mark dx src 1,,l,,mark dx src 1
+mark dx src 1,c0,s,,mark dx src 2
+mark dx src 2,,r,,mark dx src 2
+mark dx src 2,tregs,d,,mark dx src 3
+mark dx src 3,,d,,mark dx src 3
+mark dx src 3,rdx,l,,mark dx src 4
+mark dx src 4,,d,,mark dx src 5
+mark dx src 5,,s,ssrc,mark col src 0
+mark dx src 5,ssrc,s,ssrcsrc,mark col src 0
+read command 0,omark dx dst,s,otmark dx dst,mark dx dst 0
+untag command 0,otmark dx dst,l,omark dx dst,untag command 0
+mark dx dst 0,,u,,mark dx dst 0
+mark dx dst 0,c0,d,,mark dx dst 1
+mark dx dst 1,,l,,mark dx dst 1
+mark dx dst 1,c0,s,,mark dx dst 2
+mark dx dst 2,,r,,mark dx dst 2
+mark dx dst 2,tregs,d,,mark dx dst 3
+mark dx dst 3,,d,,mark dx dst 3
+mark dx dst 3,rdx,l,,mark dx dst 4
+mark dx dst 4,,d,,mark dx dst 5
+mark dx dst 5,,s,sdst,mark col dst 0
+mark dx dst 5,sdst,s,sdstdst,mark col dst 0
+read command 0,omark alu3 dst,s,otmark alu3 dst,mark alu3 dst 0
+untag command 0,otmark alu3 dst,l,omark alu3 dst,untag command 0
+mark alu3 dst 0,,u,,mark alu3 dst 0
+mark alu3 dst 0,c0,d,,mark alu3 dst 1
+mark alu3 dst 1,,l,,mark alu3 dst 1
+mark alu3 dst 1,c0,s,,mark alu3 dst 2
+mark alu3 dst 2,,r,,mark alu3 dst 2
+mark alu3 dst 2,talu,d,,mark alu3 dst 3
+mark alu3 dst 3,,d,,mark alu3 dst 3
+mark alu3 dst 3,ralu3,l,,mark alu3 dst 4
+mark alu3 dst 4,,d,,mark alu3 dst 5
+mark alu3 dst 5,,s,sdst,mark col dst 0
+mark alu3 dst 5,ssrc,s,ssrcdst,mark col dst 0
+read command 0,omark alu3 src,s,otmark alu3 src,mark alu3 src 0
+untag command 0,otmark alu3 src,l,omark alu3 src,untag command 0
+mark alu3 src 0,,u,,mark alu3 src 0
+mark alu3 src 0,c0,d,,mark alu3 src 1
+mark alu3 src 1,,l,,mark alu3 src 1
+mark alu3 src 1,c0,s,,mark alu3 src 2
+mark alu3 src 2,,r,,mark alu3 src 2
+mark alu3 src 2,talu,d,,mark alu3 src 3
+mark alu3 src 3,,d,,mark alu3 src 3
+mark alu3 src 3,ralu3,l,,mark alu3 src 4
+mark alu3 src 4,,d,,mark alu3 src 5
+mark alu3 src 5,,s,ssrc,mark col src 0
+mark alu3 src 5,sdst,s,ssrcdst,mark col src 0
+read command 0,omark alu4 dst,s,otmark alu4 dst,mark alu4 dst 0
+untag command 0,otmark alu4 dst,l,omark alu4 dst,untag command 0
+mark alu4 dst 0,,u,,mark alu4 dst 0
+mark alu4 dst 0,c0,d,,mark alu4 dst 1
+mark alu4 dst 1,,l,,mark alu4 dst 1
+mark alu4 dst 1,c0,s,,mark alu4 dst 2
+mark alu4 dst 2,,r,,mark alu4 dst 2
+mark alu4 dst 2,talu,d,,mark alu4 dst 3
+mark alu4 dst 3,,d,,mark alu4 dst 3
+mark alu4 dst 3,ralu4,l,,mark alu4 dst 4
+mark alu4 dst 4,,d,,mark alu4 dst 5
+mark alu4 dst 5,,s,sdst,mark col dst 0
+mark alu4 dst 5,ssrc,s,ssrcdst,mark col dst 0
+read command 0,omark alu4 src,s,otmark alu4 src,mark alu4 src 0
+untag command 0,otmark alu4 src,l,omark alu4 src,untag command 0
+mark alu4 src 0,,u,,mark alu4 src 0
+mark alu4 src 0,c0,d,,mark alu4 src 1
+mark alu4 src 1,,l,,mark alu4 src 1
+mark alu4 src 1,c0,s,,mark alu4 src 2
+mark alu4 src 2,,r,,mark alu4 src 2
+mark alu4 src 2,talu,d,,mark alu4 src 3
+mark alu4 src 3,,d,,mark alu4 src 3
+mark alu4 src 3,ralu4,l,,mark alu4 src 4
+mark alu4 src 4,,d,,mark alu4 src 5
+mark alu4 src 5,,s,ssrc,mark col src 0
+mark alu4 src 5,sdst,s,ssrcdst,mark col src 0
+read command 0,oadd,s,otadd,add 0
+untag command 0,otadd,l,oadd,untag command 0
+add 0,,s,,add go to alu 0
+add go to alu 0,,u,,add go to alu 0
+add go to alu 0,c0,d,,add go to alu 1
+add go to alu 1,,l,,add go to alu 1
+add go to alu 1,c0,r,,add go to alu 2
+add go to alu 2,,r,,add go to alu 2
+add go to alu 2,talu,dd,,add go to alu 3
+add go to alu 3,,d,n1,add calculate 0
+add calculate 0,,dd,,add calculate 1
+add calculate 1,,r,,add calculate 1
+add calculate 1,s0,l,,add calculate 2
+add calculate 2,n0,dd,,add calculate 3
+add calculate 2,n1,dd,,add calculate 4
+add calculate 2,,s,,update flags without carry 0
+add calculate 3,n0,dd,,add calculate 5
+add calculate 3,n1,dd,,add calculate 6
+add calculate 4,n0,dd,,add calculate 6
+add calculate 4,n1,dd,,add calculate 7
+add calculate 5,,uu,n0,add calculate 8
+add calculate 6,,uu,n1,add calculate 8
+add calculate 7,,uu,n0,add calculate 16
+add calculate 8,n0,uu,,add calculate 9
+add calculate 8,n1,uu,,add calculate 9
+add calculate 9,n0,l,,add calculate 2
+add calculate 9,n1,l,,add calculate 2
+add calculate 10,n0,dd,,add calculate 11
+add calculate 10,n1,dd,,add calculate 12
+add calculate 10,,s,,update flags with carry 0
+add calculate 11,n0,dd,,add calculate 13
+add calculate 11,n1,dd,,add calculate 14
+add calculate 12,n0,dd,,add calculate 14
+add calculate 12,n1,dd,,add calculate 15
+add calculate 13,,uu,n1,add calculate 8
+add calculate 14,,uu,n0,add calculate 16
+add calculate 15,,uu,n1,add calculate 16
+add calculate 16,n0,uu,,add calculate 17
+add calculate 16,n1,uu,,add calculate 17
+add calculate 17,n0,l,,add calculate 10
+add calculate 17,n1,l,,add calculate 10
+update flags without carry 0,,u,,update flags without carry 0
+update flags without carry 0,c0,d,,update flags without carry 1
+update flags without carry 1,,l,,update flags without carry 1
+update flags without carry 1,c0,r,,update flags without carry 2
+update flags without carry 2,,r,,update flags without carry 2
+update flags without carry 2,talu,s,,update flags without carry 3
+update flags without carry 3,,d,,update flags without carry 3
+update flags without carry 3,rflags,d,,update flags without carry 4
+update flags without carry 4,n0,r,,update flags without carry 7
+update flags without carry 4,n1,d,,update flags without carry 5
+update flags without carry 5,,r,n0,update flags without carry 6
+update flags without carry 6,,s,n0,update flags zf 0
+update flags without carry 7,,d,,update flags without carry 6
+update flags with carry 0,,u,,update flags with carry 0
+update flags with carry 0,c0,d,,update flags with carry 1
+update flags with carry 1,,l,,update flags with carry 1
+update flags with carry 1,c0,r,,update flags with carry 2
+update flags with carry 2,,r,,update flags with carry 2
+update flags with carry 2,talu,s,,update flags with carry 3
+update flags with carry 3,,d,,update flags with carry 3
+update flags with carry 3,rflags,d,,update flags with carry 4
+update flags with carry 4,n0,r,,update flags with carry 7
+update flags with carry 4,n1,d,,update flags with carry 5
+update flags with carry 5,,r,n1,update flags with carry 6
+update flags with carry 6,,s,n1,update flags zf 0
+update flags with carry 7,,d,,update flags with carry 6
+update flags zf 0,,u,,update flags zf 0
+update flags zf 0,c0,d,,update flags zf 1
+update flags zf 1,,l,,update flags zf 1
+update flags zf 1,c0,r,,update flags zf 2
+update flags zf 2,,r,,update flags zf 2
+update flags zf 2,talu,d,,update flags zf 3
+update flags zf 3,,d,,update flags zf 3
+update flags zf 3,ralu3,d,,update flags zf 4
+update flags zf 4,n0,r,,update flags zf 4
+update flags zf 4,n1,l,,update flags zf with0 0
+update flags zf with0 0,n0,l,,update flags zf with0 0
+update flags zf with0 0,n1,l,,update flags zf with0 0
+update flags zf with0 0,,r,,update flags zf with0 1
+update flags zf with0 1,,u,,update flags zf with0 1
+update flags zf with0 1,rflags,dd,,update flags zf with0 2
+update flags zf with0 2,,rr,,update flags zf with0 3
+update flags zf with0 3,,s,n0,update flags sf 0
+update flags zf 4,,l,,update flags zf with1 0
+update flags zf with1 0,n0,l,,update flags zf with1 0
+update flags zf with1 0,n1,l,,update flags zf with1 0
+update flags zf with1 0,,r,,update flags zf with1 1
+update flags zf with1 1,,u,,update flags zf with1 1
+update flags zf with1 1,rflags,dd,,update flags zf with1 2
+update flags zf with1 2,,rr,,update flags zf with1 3
+update flags zf with1 3,,s,n1,update flags sf 0
+update flags sf 0,,uu,,update flags sf 1
+update flags sf 1,,l,,update flags sf 1
+update flags sf 1,rflags,d,,update flags sf 2
+update flags sf 2,,d,,update flags sf 2
+update flags sf 2,ralu3,d,,update flags sf 3
+update flags sf 3,n0,u,,update flags sf with0 0
+update flags sf with0 0,,u,,update flags sf with0 0
+update flags sf with0 0,rflags,dd,,update flags sf with0 1
+update flags sf with0 1,,rr,,update flags sf with0 2
+update flags sf with0 2,,r,,update flags sf with0 3
+update flags sf with0 3,,s,n0,search next command 0
+update flags sf 3,n1,u,,update flags sf with1 0
+update flags sf with1 0,,u,,update flags sf with1 0
+update flags sf with1 0,rflags,dd,,update flags sf with1 1
+update flags sf with1 1,,rr,,update flags sf with1 2
+update flags sf with1 2,,r,,update flags sf with1 3
+update flags sf with1 3,,s,n1,search next command 0
+read command 0,osub,s,otsub,sub 0
+untag command 0,otsub,l,osub,untag command 0
+sub 0,,s,,sub go to alu 0
+sub go to alu 0,,u,,sub go to alu 0
+sub go to alu 0,c0,d,,sub go to alu 1
+sub go to alu 1,,l,,sub go to alu 1
+sub go to alu 1,c0,r,,sub go to alu 2
+sub go to alu 2,,r,,sub go to alu 2
+sub go to alu 2,talu,d,,sub go to alu2 0
+sub go to alu2 0,,d,,sub go to alu2 0
+sub go to alu2 0,ralu2,d,,sub negate 0
+sub negate 0,n0,r,n1,sub negate 0
+sub negate 0,n1,r,n0,sub negate 0
+sub negate 0,,l,,sub negate 1
+sub negate 1,n1,l,n0,sub negate 1
+sub negate 1,n0,l,n1,sub negate 2
+sub negate 2,n0,l,n0,sub negate 2
+sub negate 2,n1,l,n1,sub negate 2
+sub negate 1,,s,,add go to alu 0
+sub negate 2,,s,,add go to alu 0
+read command 0,omark p1 src,s,otmark p1 src,mark p1 src 0
+untag command 0,otmark p1 src,l,omark p1 src,untag command 0
+mark p1 src 0,,r,,mark p1 src 0
+mark p1 src 0,n0,l,,mark p1 src 1
+mark p1 src 0,n1,l,,mark p1 src 1
+mark p1 src 1,,u,ssrc,mark col src 0
+mark p1 src 1,sdst,u,ssrcdst,mark col src 0
+read command 0,oinc,s,otinc,inc 0
+untag command 0,otinc,l,oinc,untag command 0
+inc 0,,s,,inc go to flags 0
+inc go to flags 0,,u,,inc go to flags 0
+inc go to flags 0,c0,d,,inc go to flags 1
+inc go to flags 1,,l,,inc go to flags 1
+inc go to flags 1,c0,r,,inc go to flags 2
+inc go to flags 2,,r,,inc go to flags 2
+inc go to flags 2,talu,d,,inc go to flags 3
+inc go to flags 3,,d,,inc go to flags 3
+inc go to flags 3,rflags,d,,inc go to flags 4
+inc go to flags 4,,d,n0,add calculate 0
+read command 0,omul,s,otmul,mul 0
+untag command 0,otmul,l,omul,untag command 0
+mul 0,,u,,mul go to alu 0
+mul go to alu 0,,u,,mul go to alu 0
+mul go to alu 0,c0,d,,mul go to alu 1
+mul go to alu 1,,l,,mul go to alu 1
+mul go to alu 1,c0,r,,mul go to alu 2
+mul go to alu 2,,r,,mul go to alu 2
+mul go to alu 2,talu,d,,mul go to alu 3
+mul go to alu 3,,d,,mul go to alu 3
+mul go to alu 3,ralu2,d,,mul extend alu2 0
+mul extend alu2 0,,l,,mul extend alu2 0
+mul extend alu2 0,c0,r,,mul extend alu2 1
+mul extend alu2 1,,r,,mul extend alu2 2
+mul extend alu2 2,s0,r,n0,mul extend alu2 2
+mul extend alu2 2,,r,,mul extend alu2 3
+mul extend alu2 3,,r,,mul extend alu2 3
+mul extend alu2 3,s0,dd,,mul extend alu3 0
+mul extend alu3 0,,l,,mul extend alu3 0
+mul extend alu3 0,c0,r,,mul extend alu3 1
+mul extend alu3 1,,r,,mul extend alu3 2
+mul extend alu3 2,s0,r,n0,mul extend alu3 2
+mul extend alu3 2,,r,,mul check bit 0
+mul check bit 0,,r,,mul check bit 0
+mul check bit 0,s0,l,,mul check bit 1
+mul check bit 1,,uu,,mul check bit 2
+mul check bit 2,,uu,,mul check bit 3
+mul check bit 3,nt0,l,,mul check bit 3
+mul check bit 3,nt1,l,,mul check bit 3
+mul check bit 3,n0,dd,nt0,mul shift 0
+mul check bit 3,n1,dd,nt1,mul add 0
+mul check bit 3,s0,r,,mul clean alu1 1
+mul shift 0,,l,,mul shift 0
+mul shift 0,s0,rr,,mul shift 1
+mul shift 1,n0,l,,mul shift 2
+mul shift 1,n1,l,,mul shift 3
+mul shift 1,s0,l,,mul shift 4
+mul shift 2,,rr,n0,mul shift 1
+mul shift 3,,rr,n1,mul shift 1
+mul shift 4,,s,n0,mul shift 5
+mul shift 5,,r,,mul shift 5
+mul shift 5,s0,l,,mul check bit 2
+mul add 0,,r,,mul add 0
+mul add 0,s0,l,,mul add 2
+mul add 2,n0,dd,,mul add 3
+mul add 2,n1,dd,,mul add 4
+mul add 2,,s,,mul add 18
+mul add 3,n0,s,,mul add 5
+mul add 3,n1,s,,mul add 6
+mul add 4,n0,s,,mul add 6
+mul add 4,n1,s,,mul add 7
+mul add 5,,s,n0,mul add 8
+mul add 6,,s,n1,mul add 8
+mul add 7,,s,n0,mul add 16
+mul add 8,n0,uu,,mul add 9
+mul add 8,n1,uu,,mul add 9
+mul add 9,n0,l,,mul add 2
+mul add 9,n1,l,,mul add 2
+mul add 10,n0,dd,,mul add 11
+mul add 10,n1,dd,,mul add 12
+mul add 10,,s,,mul add 18
+mul add 11,n0,s,,mul add 13
+mul add 11,n1,s,,mul add 14
+mul add 12,n0,s,,mul add 14
+mul add 12,n1,s,,mul add 15
+mul add 13,,s,n1,mul add 8
+mul add 14,,s,n0,mul add 16
+mul add 15,,s,n1,mul add 16
+mul add 16,n0,uu,,mul add 17
+mul add 16,n1,uu,,mul add 17
+mul add 17,n0,l,,mul add 10
+mul add 17,n1,l,,mul add 10
+mul add 18,,r,,mul add 18
+mul add 18,s0,r,,mul add 19
+mul add 19,,r,,mul add 20
+mul add 20,,r,,mul add 20
+mul add 20,s0,l,,mul add 21
+mul add 21,,,,mul shift 0
+mul clean alu1 0,,uu,,mul clean alu1 1
+mul clean alu1 1,,r,,mul clean alu1 1
+mul clean alu1 1,nt0,r,n0,mul clean alu1 2
+mul clean alu1 1,nt1,r,n0,mul clean alu1 2
+mul clean alu1 2,nt0,r,n0,mul clean alu1 2
+mul clean alu1 2,nt1,r,n0,mul clean alu1 2
+mul clean alu1 2,s0,d,,mul clean alu2 0
+mul clean alu2 0,,l,,mul clean alu2 0
+mul clean alu2 0,ralu2,d,,mul clean alu2 1
+mul clean alu2 1,,l,,mul clean alu2 2
+mul clean alu2 2,n0,l,s0,mul clean alu2 2
+mul clean alu2 2,n1,l,s0,mul clean alu2 2
+mul clean alu2 2,s0,d,,mul prepare alu3 0
+mul prepare alu3 0,,r,,mul prepare alu3 0
+mul prepare alu3 0,ralu3,d,,mul prepare alu3 1
+mul prepare alu3 1,n0,r,nt0,mul prepare alu3 1
+mul prepare alu3 1,n1,r,nt1,mul prepare alu3 1
+mul prepare alu3 1,s0,l,,mul move tail to alu4 0
+mul move tail to alu4 0,,l,,mul move tail to alu4 0
+mul move tail to alu4 0,s0,r,,mul move tail to alu4 1
+mul move tail to alu4 1,nt0,r,,mul move tail to alu4 1
+mul move tail to alu4 1,nt1,r,,mul move tail to alu4 1
+mul move tail to alu4 1,n0,dd,nt0,mul move tail to alu4 with 0 0
+mul move tail to alu4 1,n1,dd,nt1,mul move tail to alu4 with 1 0
+mul move tail to alu4 1,s0,u,,mul after clean alu3 0
+mul move tail to alu4 with 0 0,nt0,r,,mul move tail to alu4 with 0 0
+mul move tail to alu4 with 0 0,nt1,r,,mul move tail to alu4 with 0 0
+mul move tail to alu4 with 0 0,s0,r,,mul move tail to alu4 with 0 0
+mul move tail to alu4 with 0 0,n0,uu,nt0,mul move tail to alu4 0
+mul move tail to alu4 with 0 0,n1,uu,nt0,mul move tail to alu4 0
+mul move tail to alu4 with 1 0,nt0,r,,mul move tail to alu4 with 1 0
+mul move tail to alu4 with 1 0,nt1,r,,mul move tail to alu4 with 1 0
+mul move tail to alu4 with 1 0,s0,r,,mul move tail to alu4 with 1 0
+mul move tail to alu4 with 1 0,n0,uu,nt1,mul move tail to alu4 0
+mul move tail to alu4 with 1 0,n1,uu,nt1,mul move tail to alu4 0
+mul after clean alu3 0,,l,,mul after clean alu3 0
+mul after clean alu3 0,ralu3,d,,mul after clean alu3 1
+mul after clean alu3 1,,l,,mul after clean alu3 2
+mul after clean alu3 2,nt0,l,s0,mul after clean alu3 2
+mul after clean alu3 2,nt1,l,s0,mul after clean alu3 2
+mul after clean alu3 2,s0,r,,mul after clean alu3 3
+mul after clean alu3 3,,r,,mul after clean alu3 3
+mul after clean alu3 3,nt0,r,n0,mul after clean alu3 4
+mul after clean alu3 3,nt1,r,n1,mul after clean alu3 4
+mul after clean alu3 4,nt0,r,n0,mul after clean alu3 4
+mul after clean alu3 4,nt1,r,n1,mul after clean alu3 4
+mul after clean alu3 4,s0,dd,,mul after clean alu4 0
+mul after clean alu4 0,,l,,mul after clean alu4 0
+mul after clean alu4 0,nt0,l,n0,mul after clean alu4 1
+mul after clean alu4 0,nt1,l,n1,mul after clean alu4 1
+mul after clean alu4 1,nt0,l,n0,mul after clean alu4 1
+mul after clean alu4 1,nt1,l,n1,mul after clean alu4 1
+mul after clean alu4 1,s0,s,,search next command 0
+read command 0,oxor,s,otxor,xor 0
+untag command 0,otxor,l,oxor,untag command 0
+xor 0,,u,,xor go to alu 0
+xor go to alu 0,,u,,xor go to alu 0
+xor go to alu 0,c0,d,,xor go to alu 1
+xor go to alu 1,,l,,xor go to alu 1
+xor go to alu 1,c0,r,,xor go to alu 2
+xor go to alu 2,,r,,xor go to alu 2
+xor go to alu 2,talu,d,,xor go to alu 3
+xor go to alu 3,,d,,xor go to alu 3
+xor go to alu 3,ralu1,d,,xor go to alu 4
+xor go to alu 4,n0,r,,xor go to alu 4
+xor go to alu 4,n1,r,,xor go to alu 4
+xor go to alu 4,,l,,xor calc xor 0
+xor calc xor 0,,u,,search next command 0
+xor calc xor 0,n0,dd,,xor calc xor 1
+xor calc xor 1,n0,dd,,xor calc xor 2
+xor calc xor 2,,s,n0,xor next col 0
+xor calc xor 1,n1,dd,,xor calc xor 3
+xor calc xor 3,,s,n1,xor next col 0
+xor calc xor 0,n1,dd,,xor calc xor 4
+xor calc xor 4,n1,dd,,xor calc xor 2
+xor calc xor 4,n0,dd,,xor calc xor 3
+xor next col 0,,uu,,xor next col 1
+xor next col 1,,uu,,xor next col 2
+xor next col 2,,l,,xor calc xor 0
+read command 0,oand,s,otand,and 0
+untag command 0,otand,l,oand,untag command 0
+and 0,,u,,and go to alu 0
+and go to alu 0,,u,,and go to alu 0
+and go to alu 0,c0,d,,and go to alu 1
+and go to alu 1,,l,,and go to alu 1
+and go to alu 1,c0,r,,and go to alu 2
+and go to alu 2,,r,,and go to alu 2
+and go to alu 2,talu,d,,and go to alu 3
+and go to alu 3,,d,,and go to alu 3
+and go to alu 3,ralu1,d,,and go to alu 4
+and go to alu 4,n0,r,,and go to alu 4
+and go to alu 4,n1,r,,and go to alu 4
+and go to alu 4,,l,,and calc and 0
+and calc and 0,,u,,search next command 0
+and calc and 0,n0,dd,,and calc and 1
+and calc and 1,,dd,,and calc and 2
+and calc and 2,,s,n0,and next col 0
+and calc and 4,,s,n1,and next col 0
+and calc and 0,n1,dd,,and calc and 3
+and calc and 3,n1,dd,,and calc and 4
+and calc and 3,n0,dd,,and calc and 2
+and next col 0,,uu,,and next col 1
+and next col 1,,uu,,and next col 2
+and next col 2,,l,,and calc and 0
+read command 0,oor,s,otor,or 0
+read command 0,otor,l,oor,read command 0
+or 0,,u,,or go to alu 0
+or go to alu 0,,u,,or go to alu 0
+or go to alu 0,c0,d,,or go to alu 1
+or go to alu 1,,l,,or go to alu 1
+or go to alu 1,c0,r,,or go to alu 2
+or go to alu 2,,r,,or go to alu 2
+or go to alu 2,talu,d,,or go to alu 3
+or go to alu 3,,d,,or go to alu 3
+or go to alu 3,ralu1,d,,or go to alu 4
+or go to alu 4,n0,r,,or go to alu 4
+or go to alu 4,n1,r,,or go to alu 4
+or go to alu 4,,l,,or calc or 0
+or calc or 0,,u,,search next command 0
+or calc or 0,n1,dd,,or calc or 1
+or calc or 1,,dd,,or calc or 2
+or calc or 2,,s,n1,or next col 0
+or calc or 4,,s,n0,or next col 0
+or calc or 0,n0,dd,,or calc or 3
+or calc or 3,n0,dd,,or calc or 4
+or calc or 3,n1,dd,,or calc or 2
+or next col 0,,uu,,or next col 1
+or next col 1,,uu,,or next col 2
+or next col 2,,l,,or calc or 0
+read command 0,onot,s,otnot,not 0
+read command 0,otnot,l,onot,read command 0
+not 0,,u,,not go to alu 0
+not go to alu 0,,u,,not go to alu 0
+not go to alu 0,c0,d,,not go to alu 1
+not go to alu 1,,l,,not go to alu 1
+not go to alu 1,c0,r,,not go to alu 2
+not go to alu 2,,r,,not go to alu 2
+not go to alu 2,talu,d,,not go to alu 3
+not go to alu 3,,d,,not go to alu 3
+not go to alu 3,ralu1,d,,not go to alu 4
+not go to alu 4,n0,r,,not go to alu 4
+not go to alu 4,n1,r,,not go to alu 4
+not go to alu 4,,l,,not calc not 0
+not calc not 0,,u,,search next command 0
+not calc not 0,n0,dd,,not calc not 1
+not calc not 0,n1,dd,,not calc not 3
+not calc not 1,,dd,,not calc not 2
+not calc not 2,,s,n1,not next col 0
+not calc not 3,,dd,,not calc not 4
+not calc not 4,,s,n0,not next col 0
+not next col 0,,uu,,not next col 1
+not next col 1,,uu,,not next col 2
+not next col 2,,l,,not calc not 0
+read command 0,odiv,s,otdiv,div 0
+untag command 0,otdiv,l,odiv,untag command 0
+div 0,,s,,div go to alu 0
+div go to alu 0,,u,,div go to alu 0
+div go to alu 0,c0,d,,div go to alu 1
+div go to alu 1,,l,,div go to alu 1
+div go to alu 1,c0,r,,div go to alu 2
+div go to alu 2,,r,,div go to alu 2
+div go to alu 2,talu,d,,div go to alu1 tail 0
+div go to alu1 tail 0,,dd,,div go to alu1 tail 1
+div go to alu1 tail 1,,dd,,div go to alu1 tail 2
+div go to alu1 tail 2,,r,,div go to alu1 tail 2
+div go to alu1 tail 2,s0,l,,div cat alu1 alu2 0
+div cat alu1 alu2 0,nt0,l,,div cat alu1 alu2 0
+div cat alu1 alu2 0,nt1,l,,div cat alu1 alu2 0
+div cat alu1 alu2 0,s0,r,,div untag alu1 0
+div cat alu1 alu2 0,n0,dd,nt0,div cat alu1 alu2 with 0 0
+div cat alu1 alu2 0,n1,dd,nt1,div cat alu1 alu2 with 1 0
+div cat alu1 alu2 with 0 0,,l,,div cat alu1 alu2 with 0 0
+div cat alu1 alu2 with 0 0,s0,r,n0,div cat alu1 alu2 with 0 1
+div cat alu1 alu2 with 0 1,,r,,div cat alu1 alu2 with 0 1
+div cat alu1 alu2 with 0 1,s0,uu,,div go to alu1 tail 2
+div cat alu1 alu2 with 1 0,,l,,div cat alu1 alu2 with 1 0
+div cat alu1 alu2 with 1 0,s0,r,n1,div cat alu1 alu2 with 1 1
+div cat alu1 alu2 with 1 1,,r,,div cat alu1 alu2 with 1 1
+div cat alu1 alu2 with 1 1,s0,uu,,div go to alu1 tail 2
+div untag alu1 0,nt0,r,n0,div untag alu1 0
+div untag alu1 0,nt1,r,n1,div untag alu1 0
+div untag alu1 0,s0,dd,,div untag alu1 1
+div untag alu1 1,,dd,,div shift alu3 left 0
+div shift alu3 left 0,,l,,div shift alu3 left 1
+div shift alu3 left 1,n0,l,,div shift alu3 left 1
+div shift alu3 left 1,n1,l,,div shift alu3 left 1
+div shift alu3 left 1,s0,uu,,div shift alu3 left 2
+div shift alu3 left 2,s0,dd,,div shift alu3 one right 0
+div shift alu3 left 2,,dd,,div shift alu3 left 3
+div shift alu3 left 3,,r,,div shift alu3 left 4
+div shift alu3 left 4,n0,l,,div shift alu3 left 5
+div shift alu3 left 4,n1,l,,div shift alu3 left 6
+div shift alu3 left 4,s0,l,,div shift alu3 left 7
+div shift alu3 left 5,,rr,n0,div shift alu3 left 4
+div shift alu3 left 6,,rr,n1,div shift alu3 left 4
+div shift alu3 left 7,,s,s0,div shift alu3 left 0
+div shift alu3 one right 0,,r,,div shift alu3 one right 0
+div shift alu3 one right 0,n0,r,,div shift alu3 one right 1
+div shift alu3 one right 0,n1,r,,div shift alu3 one right 1
+div shift alu3 one right 1,,r,,div shift alu3 one right 1
+div shift alu3 one right 1,s0,uu,,div shift alu3 one right 2
+div shift alu3 one right 2,,dd,,div shift alu3 one right 3
+div shift alu3 one right 2,s0,u,,div clean alu2 0
+div shift alu3 one right 3,,l,,div shift alu3 one right 4
+div shift alu3 one right 4,n0,r,,div shift alu3 one right 5
+div shift alu3 one right 4,n1,r,,div shift alu3 one right 6
+div shift alu3 one right 4,s0,r,,div shift alu3 one right 7
+div shift alu3 one right 5,,ll,n0,div shift alu3 one right 4
+div shift alu3 one right 6,,ll,n1,div shift alu3 one right 4
+div shift alu3 one right 7,,r,n0,div compare 1
+div compare 0,,r,,div compare 1
+div compare 0,s0,s,,div is inside 0
+div compare 1,n0,uu,,div compare 2
+div compare 1,n1,uu,,div compare 3
+div compare 1,s0,s,,div is inside 0
+div compare 2,n0,dd,,div compare 0
+div compare 2,n1,dd,,div is inside 0
+div compare 3,n0,dd,,div is not inside 0
+div compare 3,n1,dd,,div compare 0
+div is not inside 0,,r,,div is not inside 0
+div is not inside 0,s0,l,,div is not inside 1
+div is not inside 1,,dd,,div is not inside 2
+div is not inside 2,,uu,n0,div shift alu3 one right 1
+div is inside 0,,r,,div is inside 0
+div is inside 0,s0,l,,div is inside 1
+div is inside 1,,dd,,div is inside 2
+div is inside 2,,uu,n1,div is inside 3
+div is inside 3,,uu,,div is inside 10
+div is inside 10,n0,dd,,div is inside 11
+div is inside 10,n1,dd,,div is inside 12
+div is inside 10,s0,dd,,div is inside 100
+div is inside 100,,r,,div shift alu3 one right 1
+div is inside 11,n0,uu,,div is inside 80
+div is inside 11,n1,uu,,div is inside 91
+div is inside 11,s0,dd,,div shift alu3 one right 100
+div is inside 12,n0,uu,,div is inside 81
+div is inside 12,n1,uu,,div is inside 80
+div is inside 13,n0,dd,,div is inside 14
+div is inside 13,n1,dd,,div is inside 11
+div is inside 14,n0,uu,,div is inside 91
+div is inside 14,n1,uu,,div is inside 90
+div is inside 80,,l,n0,div is inside 10
+div is inside 81,,l,n1,div is inside 10
+div is inside 90,,l,n0,div is inside 13
+div is inside 91,,l,n1,div is inside 13
+div clean alu2 0,,l,,div clean alu2 0
+div clean alu2 0,ralu2,l,,div clean alu2 1
+div clean alu2 1,,d,,div clean alu2 2
+div clean alu2 2,n0,l,s0,div clean alu2 2
+div clean alu2 2,n1,l,s0,div clean alu2 2
+div clean alu2 2,s0,d,,div clean alu3 0
+div clean alu3 0,,r,,div clean alu3 0
+div clean alu3 0,ralu3,l,,div clean alu3 1
+div clean alu3 1,,d,,div clean alu3 2
+div clean alu3 2,n0,l,s0,div clean alu3 2
+div clean alu3 2,n1,l,s0,div clean alu3 2
+div clean alu3 2,s0,uu,,div place mod 0
+div place mod 0,s0,r,,div place mod 0
+div place mod 0,,d,,div place mod 1
+div place mod 1,,d,,div place mod 1
+div place mod 1,ralu4,d,,div place mod 2
+div place mod 2,n0,uu,,div place mod 3
+div place mod 2,n1,uu,,div place mod 4
+div place mod 2,s0,l,,div place div 0
+div place mod 3,,dd,n0,div place mod 5
+div place mod 4,,dd,n1,div place mod 5
+div place mod 5,,r,,div place mod 2
+div place div 0,,uu,,div place div 1
+div place div 1,,uu,,div place div 2
+div place div 2,n0,dd,,div place div 3
+div place div 2,n1,dd,,div place div 5
+div place div 3,,dd,,div place div 4
+div place div 4,,l,n0,div place div 7
+div place div 5,,dd,,div place div 6
+div place div 6,,l,n1,div place div 7
+div place div 7,s0,s,,search next command 0
+div place div 7,,uu,,div place div 1
+read command 0,omark code dst,s,otmark code dst,mark code dst 0
+untag command 0,otmark code dst,l,omark code dst,untag command 0
+mark code dst 0,,u,,mark code dst 0
+mark code dst 0,c0,d,,mark code dst 1
+mark code dst 1,,l,,mark code dst 1
+mark code dst 1,tcode,l,,mark code dst 2
+mark code dst 2,,d,,mark code dst 3
+mark code dst 3,ssrc,s,ssrcdst,mark col dst 0
+mark code dst 3,,s,sdst,mark col dst 0
+read command 0,ojmp,s,otjmp,jmp 0
+untag command 0,otjmp,l,ojmp,untag command 0
+jmp 0,,u,,jmp set place and dir 0
+jmp set place and dir 0,,u,,jmp set place and dir 0
+jmp set place and dir 0,c0,d,,jmp set place and dir 1
+jmp set place and dir 1,,l,,jmp set place and dir 1
+jmp set place and dir 1,tcode,l,,jmp set place and dir 2
+jmp set place and dir 2,,d,,jmp set place and dir 2
+jmp set place and dir 2,rip,l,,jmp set place and dir 3
+jmp set place and dir 3,,d,,jmp set place and dir 4
+jmp set place and dir 4,,u,ssr,jmp set place and dir 5
+jmp set place and dir 5,,u,,jmp set place and dir 5
+jmp set place and dir 5,c0,dd,,jmp set place and dir 6
+jmp set place and dir 6,,rr,,jmp set place and dir 7
+jmp set place and dir 7,n0,s,,roller set first 0
+jmp set place and dir 7,n1,s,,rev roller 0
+roller set first 0,n0,r,nt0,roller set first 0
+roller set first 0,n1,r,nt1,roller nxt num 2
+roller nxt num 0,,u,,roller nxt num 0
+roller nxt num 0,c0,dd,,roller nxt num 1
+roller nxt num 1,,rr,,roller nxt num 2
+roller nxt num 2,nt0,r,,roller nxt num 2
+roller nxt num 2,nt1,r,,roller nxt num 2
+roller nxt num 2,,l,,roller nxt num 3
+roller nxt num 3,nt0,r,,roller nxt num 4
+roller nxt num 4,n0,l,nt0,roller dup nums 3
+roller nxt num 4,n1,l,nt1,roller dup nums 3
+roller nxt num 4,s0,l,,roller clean 0
+roller clean 0,nt0,l,n0,roller clean 0
+roller clean 0,s0,u,,search next command 0
+roller clean 1,,d,,roller clean 1
+roller clean 1,n0,d,s0,roller clean 2
+roller clean 2,n0,d,s0,roller clean 2
+roller clean 2,s0,u,srr,search next command 0
+roller nxt num 3,nt1,s,nt0,roller add1 0
+roller add1 0,,l,,roller add1 0
+roller add1 0,s0,l,,roller add1 1
+roller add1 1,s0,d,,roller add1 1
+roller add1 1,ssr,u,n0,roller nxt num 0
+roller add1 1,,d,,roller add1 2
+roller add1 2,,d,,roller add1 2
+roller add1 2,s0,u,n0,roller nxt num 0
+roller dup nums 0,,u,,roller dup nums 0
+roller dup nums 0,c0,dd,,roller dup nums 1
+roller dup nums 1,,rr,,roller dup nums 2
+roller dup nums 2,nt0,r,,roller dup nums 2
+roller dup nums 2,nt1,r,,roller dup nums 2
+roller dup nums 2,n1,l,nt1,roller dup nums 3
+roller dup nums 2,n0,l,nt0,roller dup nums 3
+roller dup nums 3,,l,,roller dup nums 3
+roller dup nums 3,s0,l,,roller dup nums 4
+roller dup nums 4,s0,d,,roller dup nums 4
+roller dup nums 4,n1,d,,roller dup nums 4
+roller dup nums 4,n0,d,n1,roller dup nums 5
+roller dup nums 5,n0,d,,roller dup nums 5
+roller dup nums 5,n1,d,,roller dup nums 6
+roller dup nums 5,s0,s,,roller dup nums 6
+roller dup nums 6,n1,d,,roller dup nums 6
+roller dup nums 6,,u,n1,roller dup nums 7
+roller dup nums 7,n0,u,,roller dup nums 8
+roller dup nums 7,n1,u,,roller dup nums 7
+roller dup nums 7,s0,d,,roller dup nums 9
+roller dup nums 9,n1,d,n0,roller dup nums 9
+roller dup nums 9,s0,s,,roller nxt num 0
+roller dup nums 8,n1,d,,roller dup nums 4
+roller dup nums 8,n0,u,,roller dup nums 8
+rev roller 0,n1,r,n0,rev roller 0
+rev roller 0,n0,r,n1,rev roller 0
+rev roller 0,s0,l,,rev roller 1
+rev roller 1,n1,l,n0,rev roller 1
+rev roller 1,n0,l,n1,rev roller 2
+rev roller 2,,l,,rev roller 2
+rev roller 2,s0,r,,rev roller set first 0
+rev roller set first 0,n0,r,nt0,rev roller set first 0
+rev roller set first 0,n1,r,nt1,rev roller nxt num 2
+rev roller nxt num 0,,u,,rev roller nxt num 0
+rev roller nxt num 0,c0,dd,,rev roller nxt num 1
+rev roller nxt num 1,,rr,,rev roller nxt num 2
+rev roller nxt num 2,nt0,r,,rev roller nxt num 2
+rev roller nxt num 2,nt1,r,,rev roller nxt num 2
+rev roller nxt num 2,,l,,rev roller nxt num 3
+rev roller nxt num 3,nt0,r,,rev roller nxt num 4
+rev roller nxt num 4,n0,l,nt0,rev roller dup nums 3
+rev roller nxt num 4,n1,l,nt1,rev roller dup nums 3
+rev roller nxt num 4,s0,l,,rev roller clean 0
+rev roller clean 0,nt0,l,n0,rev roller clean 0
+rev roller clean 0,s0,u,,search next command 0
+rev roller clean 1,,d,,rev roller clean 1
+rev roller clean 1,n0,d,s0,rev roller clean 2
+rev roller clean 2,n0,d,s0,rev roller clean 2
+rev roller clean 2,s0,u,srr,search next command 0
+rev roller nxt num 3,nt1,s,nt0,rev roller add1 0
+rev roller add1 0,,l,,rev roller add1 0
+rev roller add1 0,s0,l,,rev roller add1 1
+rev roller add1 1,s0,d,,rev roller add1 1
+rev roller add1 1,ssr,u,n1,rev roller nxt num 0
+rev roller add1 1,,u,,rev roller add1 2
+rev roller add1 2,,u,,rev roller add1 2
+rev roller add1 2,s0,u,n1,rev roller nxt num 0
+rev roller dup nums 0,,u,,rev roller dup nums 0
+rev roller dup nums 0,c0,dd,,rev roller dup nums 1
+rev roller dup nums 1,,rr,,rev roller dup nums 2
+rev roller dup nums 2,nt0,r,,rev roller dup nums 2
+rev roller dup nums 2,nt1,r,,rev roller dup nums 2
+rev roller dup nums 2,n1,l,nt1,rev roller dup nums 3
+rev roller dup nums 2,n0,l,nt0,rev roller dup nums 3
+rev roller dup nums 3,,l,,rev roller dup nums 3
+rev roller dup nums 3,s0,l,,rev roller dup nums 4
+rev roller dup nums 4,s0,d,,rev roller dup nums 12
+rev roller dup nums 12,s0,d,,rev roller dup nums 12
+rev roller dup nums 12,,d,,rev roller dup nums 13
+rev roller dup nums 13,,d,,rev roller dup nums 13
+rev roller dup nums 13,s0,u,,rev roller dup nums 4
+rev roller dup nums 4,n0,u,,rev roller dup nums 4
+rev roller dup nums 4,n1,u,n0,rev roller dup nums 5
+rev roller dup nums 5,n1,u,,rev roller dup nums 5
+rev roller dup nums 5,n0,u,,rev roller dup nums 6
+rev roller dup nums 5,s0,s,,rev roller dup nums 6
+rev roller dup nums 6,n0,u,,rev roller dup nums 6
+rev roller dup nums 6,,d,n0,rev roller dup nums 7
+rev roller dup nums 7,n1,d,,rev roller dup nums 8
+rev roller dup nums 7,n0,d,,rev roller dup nums 7
+rev roller dup nums 7,s0,u,,rev roller dup nums 9
+rev roller dup nums 9,n0,u,n1,rev roller dup nums 9
+rev roller dup nums 9,s0,s,,rev roller nxt num 0
+rev roller dup nums 8,n0,u,,rev roller dup nums 4
+rev roller dup nums 8,n1,d,,rev roller dup nums 8
+read command 0,oje,s,otje,oje 0
+untag command 0,otje,l,oje,untag command 0
+oje 0,,s,,oje go to decide 0
+oje go to decide 0,,u,,oje go to decide 0
+oje go to decide 0,c0,d,,oje go to decide 1
+oje go to decide 1,,l,,oje go to decide 1
+oje go to decide 1,c0,r,,oje go to decide 2
+oje go to decide 2,,r,,oje go to decide 2
+oje go to decide 2,talu,d,,oje go to decide 3
+oje go to decide 3,,d,,oje go to decide 3
+oje go to decide 3,rflags,dd,,oje go to decide 4
+oje go to decide 4,,rr,,oje go to decide 5
+oje go to decide 5,n1,s,,search next command 0
+oje go to decide 5,n0,s,,jmp not taken 0
+jmp not taken 0,,u,,jmp not taken 0
+jmp not taken 0,c0,d,,jmp not taken 1
+jmp not taken 1,,l,,jmp not taken 1
+jmp not taken 1,c0,r,,jmp not taken 2
+jmp not taken 2,,r,,jmp not taken 2
+jmp not taken 2,tcode,l,,jmp not taken 3
+jmp not taken 3,,d,,jmp not taken 3
+jmp not taken 3,rip,r,,jmp not taken 4
+jmp not taken 4,otje,l,oje,untag command 0
+jmp not taken 4,otjne,l,ojne,untag command 0
+jmp not taken 4,otjb,l,ojb,untag command 0
+jmp not taken 4,otja,l,oja,untag command 0
+jmp not taken 4,otjbe,l,ojbe,untag command 0
+jmp not taken 4,otjae,l,ojae,untag command 0
+read command 0,ojne,s,otjne,ojne 0
+untag command 0,otjne,l,ojne,untag command 0
+ojne 0,,s,,ojne go to decide 0
+ojne go to decide 0,,u,,ojne go to decide 0
+ojne go to decide 0,c0,d,,ojne go to decide 1
+ojne go to decide 1,,l,,ojne go to decide 1
+ojne go to decide 1,c0,r,,ojne go to decide 2
+ojne go to decide 2,,r,,ojne go to decide 2
+ojne go to decide 2,talu,d,,ojne go to decide 3
+ojne go to decide 3,,d,,ojne go to decide 3
+ojne go to decide 3,rflags,dd,,ojne go to decide 4
+ojne go to decide 4,,rr,,ojne go to decide 5
+ojne go to decide 5,n0,s,,search next command 0
+ojne go to decide 5,n1,s,,jmp not taken 0
+read command 0,ojb,s,otjb,ojb 0
+untag command 0,otjb,l,ojb,untag command 0
+ojb 0,,s,,ojb go to decide 0
+ojb go to decide 0,,u,,ojb go to decide 0
+ojb go to decide 0,c0,d,,ojb go to decide 1
+ojb go to decide 1,,l,,ojb go to decide 1
+ojb go to decide 1,c0,r,,ojb go to decide 2
+ojb go to decide 2,,r,,ojb go to decide 2
+ojb go to decide 2,talu,d,,ojb go to decide 3
+ojb go to decide 3,,d,,ojb go to decide 3
+ojb go to decide 3,rflags,dd,,ojb go to decide 4
+ojb go to decide 4,n1,s,,search next command 0
+ojb go to decide 4,n0,s,,jmp not taken 0
+read command 0,ojae,s,otjae,ojae 0
+untag command 0,otjae,l,ojae,untag command 0
+ojae 0,,s,,ojae go to decide 0
+ojae go to decide 0,,u,,ojae go to decide 0
+ojae go to decide 0,c0,d,,ojae go to decide 1
+ojae go to decide 1,,l,,ojae go to decide 1
+ojae go to decide 1,c0,r,,ojae go to decide 2
+ojae go to decide 2,,r,,ojae go to decide 2
+ojae go to decide 2,talu,d,,ojae go to decide 3
+ojae go to decide 3,,d,,ojae go to decide 3
+ojae go to decide 3,rflags,dd,,ojae go to decide 4
+ojae go to decide 4,n0,s,,search next command 0
+ojae go to decide 4,n1,s,,jmp not taken 0
+read command 0,ojbe,s,otjbe,ojbe 0
+untag command 0,otjbe,l,ojbe,untag command 0
+ojbe 0,,s,,ojbe go to decide 0
+ojbe go to decide 0,,u,,ojbe go to decide 0
+ojbe go to decide 0,c0,d,,ojbe go to decide 1
+ojbe go to decide 1,,l,,ojbe go to decide 1
+ojbe go to decide 1,c0,r,,ojbe go to decide 2
+ojbe go to decide 2,,r,,ojbe go to decide 2
+ojbe go to decide 2,talu,d,,ojbe go to decide 3
+ojbe go to decide 3,,d,,ojbe go to decide 3
+ojbe go to decide 3,rflags,dd,,ojbe go to decide 4
+ojbe go to decide 4,n0,rr,,ojbe go to decide 5
+ojbe go to decide 5,n0,s,,jmp not taken 0
+ojbe go to decide 5,n1,s,,search next command 0
+ojbe go to decide 4,n1,s,,search next command 0
+read command 0,omark start mem dst,s,otmark start mem dst,omark start mem dst 0
+untag command 0,otmark start mem dst,l,omark start mem dst,untag command 0
+oja 0,,s,,oja go to decide 0
+oja go to decide 0,,u,,oja go to decide 0
+oja go to decide 0,c0,d,,oja go to decide 1
+oja go to decide 1,,l,,oja go to decide 1
+oja go to decide 1,c0,r,,oja go to decide 2
+oja go to decide 2,,r,,oja go to decide 2
+oja go to decide 2,talu,d,,oja go to decide 3
+oja go to decide 3,,d,,oja go to decide 3
+oja go to decide 3,rflags,dd,,oja go to decide 4
+oja go to decide 4,n0,rr,,oja go to decide 5
+oja go to decide 5,n0,s,,search next command 0
+oja go to decide 5,n1,s,,jmp not taken 0
+oja go to decide 4,n1,s,,jmp not taken 0
+read command 0,omark start mem dst,s,otmark start mem dst,omark start mem dst 0
+untag command 0,otmark start mem dst,l,omark start mem dst,untag command 0
+omark start mem dst 0,,u,,omark start mem dst 0
+omark start mem dst 0,c0,d,,omark start mem dst 1
+omark start mem dst 1,,l,,omark start mem dst 1
+omark start mem dst 1,c0,r,,omark start mem dst 2
+omark start mem dst 2,,r,,omark start mem dst 2
+omark start mem dst 2,tmemory,l,,omark start mem dst 3
+omark start mem dst 3,,d,,omark start mem dst 4
+omark start mem dst 4,,s,sdst,mark col dst 0
+omark start mem dst 4,ssrc,s,ssrcdst,mark col dst 0
+read command 0,oaccess mem,s,otaccess mem,oaccess mem 0
+untag command 0,otaccess mem,l,oaccess mem,untag command 0
+oaccess mem 0,,u,,oaccess mem 0
+oaccess mem 0,c0,d,,oaccess mem 1
+oaccess mem 1,,l,,oaccess mem 1
+oaccess mem 1,c0,r,,oaccess mem 2
+oaccess mem 2,,r,,oaccess mem 2
+oaccess mem 2,tmemory,ll,,oaccess mem 3
+oaccess mem 3,,dd,,oaccess mem 4
+oaccess mem 4,,u,ssr,oaccess mem 5
+oaccess mem 5,,rr,,roller set first 0
+read command 0,omark mem src,s,otmark mem src,omark mem src 0
+untag command 0,otmark mem src,l,omark mem src,untag command 0
+omark mem src 0,,u,,omark mem src 0
+omark mem src 0,c0,d,,omark mem src 1
+omark mem src 1,,l,,omark mem src 1
+omark mem src 1,c0,r,,omark mem src 2
+omark mem src 2,,r,,omark mem src 2
+omark mem src 2,tmemory,ll,,omark mem src 3
+omark mem src 3,,dd,,omark mem src 4
+omark mem src 4,n0,d,s0,omark mem src 4
+omark mem src 4,s0,u,,omark mem src 5
+omark mem src 5,,r,,omark mem src 6
+omark mem src 6,,s,ssrc,mark col src 0
+omark mem src 6,sdst,s,ssrcdst,mark col src 0
+read command 0,omark mem dst,s,otmark mem dst,omark mem dst 0
+untag command 0,otmark mem dst,l,omark mem dst,untag command 0
+omark mem dst 0,,u,,omark mem dst 0
+omark mem dst 0,c0,d,,omark mem dst 1
+omark mem dst 1,,l,,omark mem dst 1
+omark mem dst 1,c0,r,,omark mem dst 2
+omark mem dst 2,,r,,omark mem dst 2
+omark mem dst 2,tmemory,ll,,omark mem dst 3
+omark mem dst 3,,dd,,omark mem dst 4
+omark mem dst 4,n0,d,s0,omark mem dst 4
+omark mem dst 4,s0,u,,omark mem dst 5
+omark mem dst 5,,r,,omark mem dst 6
+omark mem dst 6,,s,sdst,mark col dst 0
+omark mem dst 6,ssrc,s,ssrcdst,mark col dst 0
+read command 0,omark p2 src,s,otmark p2 src,mark p2 src 0
+untag command 0,otmark p2 src,l,omark p2 src,untag command 0
+mark p2 src 0,,r,,mark p2 src 0
+mark p2 src 0,n0,r,,mark p2 src 1
+mark p2 src 0,n1,r,,mark p2 src 1
+mark p2 src 1,,r,,mark p2 src 1
+mark p2 src 1,s0,s,,mark p2 src 2
+mark p2 src 2,,u,ssrc,mark col src 0
+mark p2 src 2,sdst,u,ssrcdst,mark col src 0
+ ,,,, 
+ ,,,, 
+ ,,,, 
+ ,,,, 
+ ,,,, 
+ ,,,, 
+ ,,,, 
+ ,,,, 
